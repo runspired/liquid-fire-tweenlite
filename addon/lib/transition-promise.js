@@ -30,7 +30,6 @@ export default class TransitionPromise {
 
     this._promise = options.finishPrevious()
       .then(() => {
-        console.log('triggering first step end for: ' + this.id);
         return this._firstStep.resolve();
       })
       .then(() => {
@@ -41,14 +40,7 @@ export default class TransitionPromise {
           });
         }
         return options.animateOut()
-          .then(() => {
-            console.log('finished animate out for: ' + this.id);
-          })
-          .then(options.animateIn)
-          .then(() => {
-
-            console.log('finished animate in for: ' + this.id);
-          });
+          .then(options.animateIn);
       });
   }
 
