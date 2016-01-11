@@ -1,7 +1,7 @@
 {
   "name": "liquid-fire-tweenlite",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "TweenLite (GSAP) backed versions of liquid-fire transitions",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -15,7 +15,7 @@
   "engines": {
     "node": ">= 4.1.1"
   },
-  "author": "",
+  "author": "Chris Thoburn (@runspired)",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.2.0",
@@ -37,7 +37,12 @@
     "liquid-fire": "0.22.1"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "liquid-fire",
+    "transitions",
+    "animations",
+    "gsap",
+    "tweenlite"
   ],
   "dependencies": {
     "ember-cli-babel": "^5.1.5"
