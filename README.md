@@ -1,5 +1,9 @@
 # Liquid-fire-tweenlite
 
+[![Build Status](https://travis-ci.org/runspired/liquid-fire-tweenlite.svg)](https://travis-ci.org/runspired/liquid-fire-tweenlite)
+
+[![npm version](https://badge.fury.io/js/liquid-fire-tweenlite.svg)](http://badge.fury.io/js/liquid-fire-tweenlite)
+[![Ember Observer Score](http://emberobserver.com/badges/liquid-fire-tweenlite.svg)](http://emberobserver.com/addons/liquid-fire-tweenlite)
 This README outlines the details of collaborating on this Ember addon.
 
 ## Installation
