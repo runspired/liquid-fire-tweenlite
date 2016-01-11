@@ -29,17 +29,17 @@ export default class TransitionPromise {
     this._firstStep = defer(this.id + '-start');
 
     this._promise = options.finishPrevious()
-      .then(() => {
-        return this._firstStep.resolve();
+      .then((result) => {
+        return this._firstStep.resolve(result);
       })
-      .then(() => {
+      .then((result) => {
         if (this.parallel) {
           return RSVP.hash({
-            animateOut: options.animateOut(),
-            animateIn: options.animateIn()
+            animateOut: options.animateOut(result),
+            animateIn: options.animateIn(result)
           });
         }
-        return options.animateOut()
+        return options.animateOut(result)
           .then(options.animateIn);
       });
   }
