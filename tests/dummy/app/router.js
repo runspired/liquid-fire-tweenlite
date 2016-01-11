@@ -16,6 +16,7 @@ Router.map(function() {
     this.route('to-right');
     this.route('to-up');
     this.route('scale');
+    this.route('flex-grow');
   });
   this.route('about');
 });

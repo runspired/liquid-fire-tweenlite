@@ -21,9 +21,9 @@ export default function() {
   );
 
   this.transition(
-    this.toRoute('transitions.to-left'),
-    this.use('to-left', { duration: 1000 }),
-    this.reverse('to-right', { duration: 1000 })
+    this.toRoute('transitions.flex-grow'),
+    this.use('flex-grow', { duration: 1000 }),
+    this.reverse('flex-grow', { duration: 1000 })
   );
 
   this.transition(
