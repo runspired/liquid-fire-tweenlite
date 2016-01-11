@@ -4,9 +4,13 @@ import moduleForAcceptance from '../../../tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | transitions/scale');
 
 test('visiting /transitions/scale', function(assert) {
-  visit('/transitions/scale');
+  visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/transitions/scale');
+    visit('/scale');
+
+    andThen(function() {
+      assert.equal(currentURL(), '/scale');
+    });
   });
 });

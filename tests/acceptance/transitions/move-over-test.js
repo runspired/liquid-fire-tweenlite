@@ -4,9 +4,13 @@ import moduleForAcceptance from '../../../tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | transitions/move over');
 
 test('visiting /transitions/move-over', function(assert) {
-  visit('/transitions/move-over');
+  visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/transitions/move-over');
+    visit('/move-over');
+
+    andThen(function() {
+      assert.equal(currentURL(), '/move-over');
+    });
   });
 });

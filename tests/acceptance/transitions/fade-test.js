@@ -4,9 +4,13 @@ import moduleForAcceptance from '../../../tests/helpers/module-for-acceptance';
 moduleForAcceptance('Acceptance | transitions/fade');
 
 test('visiting /transitions/fade', function(assert) {
-  visit('/transitions/fade');
+  visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/transitions/fade');
+    visit('/fade');
+
+    andThen(function() {
+      assert.equal(currentURL(), '/fade');
+    });
   });
 });
