@@ -1,30 +1,52 @@
-# Liquid-fire-tweenlite
+Liquid-fire-tweenlite
+=====================
 
 [![Build Status](https://travis-ci.org/runspired/liquid-fire-tweenlite.svg)](https://travis-ci.org/runspired/liquid-fire-tweenlite)
-
 [![npm version](https://badge.fury.io/js/liquid-fire-tweenlite.svg)](http://badge.fury.io/js/liquid-fire-tweenlite)
 [![Ember Observer Score](http://emberobserver.com/badges/liquid-fire-tweenlite.svg)](http://emberobserver.com/addons/liquid-fire-tweenlite)
-This README outlines the details of collaborating on this Ember addon.
 
-## Installation
+## Support, Questions, Collaboration
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+Join the [liquid-fire](https://embercommunity.slack.com/messages/liquid-fire/) channel on Slack.
 
-## Running
+[![Slack Status](https://ember-community-slackin.herokuapp.com/badge.svg)](https://ember-community-slackin.herokuapp.com/)
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+### Status
 
-## Running Tests
+[Changelog](./CHANGELOG.md)
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+[![dependencies](https://david-dm.org/runspired/liquid-fire-tweenlite.svg)](https://david-dm.org/runspired/liquid-fire-tweenlite)
+[![devDependency Status](https://david-dm.org/runspired/liquid-fire-tweenlite/dev-status.svg)](https://david-dm.org/runspired/liquid-fire-tweenlite#info=devDependencies)
 
-## Building
 
-* `ember build`
+## Usage
 
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+`ember install liquid-fire-tweenlite`
+
+This will run the default blueprint which additionally installs `liquid-fire`, `ember-tweenlite`, and `tweenlite` based
+versions of `liquid-fire`s default transitions into your app.
+
+Usage of each transition remains identical to before, except options are passed to `TweenLite` instances
+instead of `velocity.js`.
+
+## Contributing
+
+Contributions are very welcome, when making a PR please try to use the following conventions:
+
+** Commit Messages: ** [angular-style](https://github.com/angular/angular.js/blob/v1.4.8/CONTRIBUTING.md#commit)
+
+`<type>(<scope>): <title>`
+
+Examples:
+
+- chore(deps): bump deps in package.json and bower.json
+- docs(component): document the `fast-action` component
+
+**Branch Naming:**
+
+`<type>/<short-description>`
+
+Examples:
+
+- chore/bump-deps
+- docs/foo-component-usage
