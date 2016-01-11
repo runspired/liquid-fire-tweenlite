@@ -1,4 +1,4 @@
-import { stop, TransitionPromise } from "liquid-fire-tweenlite";
+import { stop, TransitionPromise } from 'liquid-fire-tweenlite';
 
 export default function defaultTransition() {
 
