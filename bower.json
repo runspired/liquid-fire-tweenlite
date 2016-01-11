@@ -13,5 +13,8 @@
     "loader.js": "ember-cli/loader.js#3.2.1",
     "qunit": "~1.20.0",
     "gsap": "1.18.2"
+  },
+  "devDependencies": {
+    "bootstrap": "~3.3.6"
   }
 }
