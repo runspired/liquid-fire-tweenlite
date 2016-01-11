@@ -11,6 +11,11 @@ Router.map(function() {
     this.route('default');
     this.route('index', { path: '/' });
     this.route('cross-fade');
+    this.route('to-left');
+    this.route('to-down');
+    this.route('to-right');
+    this.route('to-up');
+    this.route('scale');
   });
   this.route('about');
 });
