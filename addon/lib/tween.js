@@ -2,6 +2,10 @@ import TweenLite from 'tweenlite';
 import Ember from 'ember';
 
 const {
+  copy
+} = Ember;
+
+const {
   defer
 } = Ember.RSVP;
 
@@ -14,7 +18,7 @@ let TWEEN_ID = 0;
 
 export default function tween($element, properties, options, label) {
   const element = $element.get(0);
-  const opts = normalizeOptions(properties, options);
+  const opts = normalizeOptions(properties, copy(options, true));
   const transition_id = '-lf-tweenlite:' + label + ':' + (TWEEN_ID++);
   const deferred = defer(transition_id);
 
