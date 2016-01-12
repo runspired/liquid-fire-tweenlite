@@ -1,7 +1,7 @@
 // BEGIN-SNIPPET transition-demo-setup
 export default function() {
 
-  // this.transition = this.transition.bind(this, this.debug());
+  this.transition = this.transition.bind(this, this.debug());
 
   this.transition(
     this.onInitialRender(),

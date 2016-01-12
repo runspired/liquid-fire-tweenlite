@@ -17,6 +17,10 @@ Router.map(function() {
     this.route('to-up');
     this.route('scale');
     this.route('flex-grow');
+    this.route('scroll-then');
+    this.route('fly-to');
+    this.route('explode');
+    this.route('move-over');
   });
   this.route('about');
 });
