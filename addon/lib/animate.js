@@ -1,10 +1,16 @@
 import Ember from 'ember';
 import TweenLite from 'tweenlite';
 import tween from './tween';
+import jQuery from 'jquery';
 
 const {
   Promise // jshint ignore:line
 } = Ember.RSVP;
+
+export function getElement($element) {
+  return ($element && ($element instanceof jQuery || $element.constructor.prototype.jquery)) ?
+    $element.get(0) : $element;
+}
 
 export function animate(element, properties /*, options, label*/) {
   if (!element || !properties) {
@@ -22,7 +28,7 @@ export function getTween($element, label) {
   if (!$element) {
     return false;
   }
-  const element = $element.get(0);
+  const element = getElement($element);
   const tweens = TweenLite.getTweensOf(element);
   for (let i = 0; i < tweens.length; i++) {
     if (tweens[i].label === label) {

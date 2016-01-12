@@ -1,5 +1,6 @@
 import TweenLite from 'tweenlite';
 import Ember from 'ember';
+import { getElement } from './animate';
 
 const {
   copy,
@@ -18,7 +19,7 @@ const TWEEN_DEFAULTS = {
 let TWEEN_ID = 0;
 
 export default function tween($element, properties = {}, options = {}, label = '') {
-  const element = $element.get(0);
+  const element = getElement($element);
   const opts = normalizeOptions(copy(properties, true), copy(options, true));
   const transition_id = '-lf-tweenlite:' + label + ':' + (TWEEN_ID++);
   const deferred = defer(transition_id);
