@@ -1,4 +1,7 @@
 import { animate, TransitionPromise } from 'liquid-fire-tweenlite';
+import Ember from 'ember';
+
+const { Promise } = Ember.RSVP; // jshint ignore:line
 
 export default function flyTo(opts={}) {
 
@@ -43,7 +46,7 @@ export default function flyTo(opts={}) {
       }.bind(this),
       animateIn: function() {
         this.newElement.css({ visibility: ''});
-        return true;
+        return Promise.resolve(true);
       }.bind(this)
     });
 
