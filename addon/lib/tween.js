@@ -2,7 +2,8 @@ import TweenLite from 'tweenlite';
 import Ember from 'ember';
 
 const {
-  copy
+  copy,
+  isArray
 } = Ember;
 
 const {
@@ -16,22 +17,32 @@ const TWEEN_DEFAULTS = {
 
 let TWEEN_ID = 0;
 
-export default function tween($element, properties, options, label) {
+export default function tween($element, properties = {}, options = {}, label = '') {
   const element = $element.get(0);
-  const opts = normalizeOptions(properties, copy(options, true));
+  const opts = normalizeOptions(copy(properties, true), copy(options, true));
   const transition_id = '-lf-tweenlite:' + label + ':' + (TWEEN_ID++);
   const deferred = defer(transition_id);
+  let Tween;
 
-  opts.onComplete = function() { deferred.resolve(); };
-  opts.onStart = function() {
-    element.style.display = opts.css.display;
-    element.style.visibility = opts.css.visibility;
+  opts.onComplete = function() {
+    console.log('Tween Completed', transition_id);
+    deferred.resolve();
   };
 
-  const Tween = TweenLite.to(
-    element,
-    opts.duration,
-    opts);
+  if (opts.fromVars) {
+    var fromOpts = opts.fromVars;
+    delete opts.fromVars;
+    Tween = TweenLite.fromTo(
+      element,
+      opts.duration,
+      { css: fromOpts },
+      opts);
+  } else {
+    Tween = TweenLite.to(
+      element,
+      opts.duration,
+      opts);
+  }
 
   Tween.transition_id = transition_id;
   Tween.transition_label = label;
@@ -42,22 +53,47 @@ export default function tween($element, properties, options, label) {
 
 function normalizeOptions(properties, options) {
   const opts = Object.assign({}, TWEEN_DEFAULTS, options);
+  normalizeCSS(opts, properties);
 
-  opts.css = properties;
   opts.duration = opts.duration / 1000;
   opts.delay = opts.delay / 1000;
+
+  return opts;
+}
+
+function normalizeCSS(opts, css) {
+  const fromVars = {};
+  let hasFromVar = false;
+
+  Object.keys(css).forEach((key) => {
+    if (isArray(css[key])) {
+      fromVars[key] = css[key][0];
+      css[key] = css[key][1];
+      hasFromVar = true;
+    }
+  });
+
+  if (hasFromVar) {
+    opts.fromVars = fromVars;
+  }
+
 
   // By default, we clear the element's `display`
   // and `visibility` properties at the start of animation. Our
   // animated divs are all initially rendered with `display:none`
   // and `visibility:hidden` to prevent a flash of before-animated
   // content.
-  if (typeof(opts.css.display) === 'undefined') {
-    opts.css.display = '';
+  if (typeof(css.display) === 'undefined') {
+    css.display = '';
   }
-  if (typeof(opts.css.visibility) === 'undefined') {
-    opts.css.visibility = '';
+  if (typeof(css.visibility) === 'undefined') {
+    css.visibility = '';
   }
 
-  return opts;
+  if (hasFromVar) {
+    fromVars.display = css.display;
+    fromVars.visibility = css.visibility;
+  }
+
+  opts.css = css;
 }

@@ -15,10 +15,23 @@ function returnResolved() {
   return Promise.resolve();
 }
 
+function wrapPromise(promise, deferred, label) {
+  return promise.then(
+      (success) => {
+        deferred.resolve(success);
+        return success;
+      },
+      (error) => {
+        deferred.reject(error);
+        throw error;
+      }
+    );
+}
+
 export default class TransitionPromise {
 
   constructor(options) {
-    this.id = '-transition-' + (TRANSITION_ID++);
+    this.id = '-tweenlite-transition-' + (TRANSITION_ID++);
     this.parallel = options.parallel || false;
     options.finishPrevious = options.finishPrevious || returnResolved;
     options.animateOut = options.animateOut || returnResolved;
@@ -28,20 +41,25 @@ export default class TransitionPromise {
     this._animateIn = defer(this.id + '-in');
     this._firstStep = defer(this.id + '-start');
 
-    this._promise = options.finishPrevious()
-      .then((result) => {
-        return this._firstStep.resolve(result);
-      })
+    this._promise = defer(this.id + '-main');
+
+    wrapPromise(options.finishPrevious(), this._firstStep, 'first step')
       .then((result) => {
         if (this.parallel) {
-          return RSVP.hash({
-            animateOut: options.animateOut(result),
-            animateIn: options.animateIn(result)
-          });
+          return Promise.all([
+            wrapPromise(options.animateOut(result), this._animateOut, 'animate out'),
+            wrapPromise(options.animateIn(result), this._animateIn, 'animate in')
+          ]);
         }
-        return options.animateOut(result)
-          .then(options.animateIn);
-      });
+        return wrapPromise(options.animateOut(result), this._animateOut, 'animate out')
+          .then(() => {
+            return wrapPromise(options.animateIn(result), this._animateIn, 'animate in');
+          });
+      })
+      .then(
+        this._promise.resolve,
+        this._promise.reject
+      );
   }
 
   firstStep() {
@@ -57,15 +75,15 @@ export default class TransitionPromise {
   }
 
   then() {
-    return this._promise.then(...arguments);
+    return this._promise.promise.then.call(this._promise.promise, ...arguments);
   }
 
   finally() {
-    return this._promise.finally(...arguments);
+    return this._promise.promise.finally.call(this._promise.promise, ...arguments);
   }
 
   catch() {
-    return this._promise.catch(...arguments);
+    return this._promise.promise.catch.call(this._promise.promise, ...arguments);
   }
 
 }
