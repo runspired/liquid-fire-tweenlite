@@ -6,7 +6,14 @@ module.exports = function(defaults) {
   defaults.snippetSearchPaths = ['tests/dummy/app'];
   defaults.snippetPaths = ['tests/dummy/snippets'];
 
-  var app = new EmberAddon(defaults);
+  var app = new EmberAddon(defaults,
+    {
+      babel: {
+        includePolyfill: true,
+        comments: false,
+        compact: true
+      }
+    });
 
   var bootstrapPath = app.bowerDirectory + '/bootstrap/dist/';
   app.import(bootstrapPath + 'css/bootstrap.css');
