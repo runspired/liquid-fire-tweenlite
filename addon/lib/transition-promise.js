@@ -86,4 +86,8 @@ export default class TransitionPromise {
     return this._promise.promise.catch.call(this._promise.promise, ...arguments);
   }
 
+  static resolve() {
+    return new TransitionPromise({});
+  }
+
 }
