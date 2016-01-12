@@ -5,47 +5,50 @@ const {
   Promise // jshint ignore:line
   } = Ember.RSVP;
 
-export default function moveOver(dimension, direction, opts) {
-  let finishPrevious;
+export default function moveOver(dimension, direction, opts = {}) {
 
-  if (isAnimating(this.oldElement, 'moving-in')) {
-    finishPrevious = finish(this.oldElement, 'moving-in');
-  } else {
-    stop(this.oldElement);
-    finishPrevious = Promise.resolve();
-  }
+  const finishPrevious = () => {
+    let firstStep;
 
-  finishPrevious = finishPrevious.then(() => {
-    const oldParams = {};
-    const newParams = {};
-    let property;
-    let measure;
-
-    if (dimension.toLowerCase() === 'x') {
-      property = 'translateX';
-      measure = 'width';
+    if (isAnimating(this.oldElement, 'moving-in')) {
+      firstStep = finish(this.oldElement, 'moving-in');
     } else {
-      property = 'translateY';
-      measure = 'height';
+      stop(this.oldElement);
+      firstStep = Promise.resolve();
     }
 
-    const bigger = biggestSize(this, measure);
+    return firstStep.then(() => {
+      const oldParams = {};
+      const newParams = {};
+      let property;
+      let measure;
 
-    oldParams[property] = (bigger * direction) + 'px';
-    newParams[property] = ["0px", (-1 * bigger * direction) + 'px'];
+      if (dimension.toLowerCase() === 'x') {
+        property = 'x'; //'translateX';
+        measure = 'width';
+      } else {
+        property = 'y'; // 'translateY';
+        measure = 'height';
+      }
 
-    return {
-      oldParams,
-      newParams
-    };
-  });
+      const bigger = biggestSize(this, measure);
 
-  const animateIn = (params) => {
-    return animate(this.oldElement, params.oldParams, opts);
+      oldParams[property] = (bigger * direction) + 'px';
+      newParams[property] = [(-1 * bigger * direction) + 'px', '0px'];
+
+      return {
+        oldParams,
+        newParams
+      };
+    });
   };
 
   const animateOut = (params) => {
-    return animate(this.newElement, params.newParams, opts, 'moving-in');
+    return animate(this.oldElement, params.oldParams, opts, 'move-over--out');
+  };
+
+  const animateIn = (params) => {
+    return animate(this.newElement, params.newParams, opts, 'move-over--in');
   };
 
   return new TransitionPromise({
