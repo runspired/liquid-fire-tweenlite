@@ -15,7 +15,7 @@ function returnResolved() {
   return Promise.resolve();
 }
 
-function wrapPromise(promise, deferred, label) {
+function wrapPromise(promise, deferred /* label */) {
   return promise.then(
       (success) => {
         deferred.resolve(success);

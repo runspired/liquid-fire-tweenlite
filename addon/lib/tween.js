@@ -25,7 +25,6 @@ export default function tween($element, properties = {}, options = {}, label = '
   let Tween;
 
   opts.onComplete = function() {
-    console.log('Tween Completed', transition_id);
     deferred.resolve();
   };
 
