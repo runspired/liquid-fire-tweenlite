@@ -1,6 +1,10 @@
 Changelog
 =========
 
+## v1.0.1
+
+- [963c1054](https://github.com/runspired/liquid-fire-tweenlite/commit/963c10547c78c566086d7bfbfbcdb787a850178a) **fix(blueprint)**: don't error out during install *by [Chris Thoburn](https://github.com/runspired)*
+
 ## v1.0.0
 
 ### Pull Requests
