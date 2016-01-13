@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v1.0.2
+
+#### Commits
+
+- [1d9eef48](https://github.com/runspired/liquid-fire-tweenlite/commit/1d9eef4815208b1d058712032605597fe983dc79) **fix(blueprint)**: moves transition files to their correct location *by [Chris Thoburn](https://github.com/runspired)*
+
 ## v1.0.1
 
 - [963c1054](https://github.com/runspired/liquid-fire-tweenlite/commit/963c10547c78c566086d7bfbfbcdb787a850178a) **fix(blueprint)**: don't error out during install *by [Chris Thoburn](https://github.com/runspired)*
