@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v1.0.4
+
+#### Commits
+
+- [4e0af42b](https://github.com/runspired/liquid-fire-tweenlite/commit/4e0af42b498b5285a0ecfd28799606a8e93ce836) **fix(blueprint)**: don't install explode transition *by [Chris Thoburn](https://github.com/runspired)*
+
 ## v1.0.3
 
 #### Commits

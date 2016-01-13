@@ -1,6 +1,6 @@
 {
   "name": "liquid-fire-tweenlite",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TweenLite (GSAP) backed versions of liquid-fire transitions",
   "directories": {
     "doc": "doc",
