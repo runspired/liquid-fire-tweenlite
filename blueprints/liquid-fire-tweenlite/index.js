@@ -4,6 +4,10 @@ module.exports = {
 
   normalizeEntityName: function() {
     return '';
+  },
+
+  afterInstall: function() {
+    return this.addAddonToProject('ember-tweenlite', '*');
   }
 
 };
