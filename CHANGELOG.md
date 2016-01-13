@@ -1,6 +1,12 @@
 Changelog
 =========
 
+## v1.0.3
+
+#### Commits
+
+- [9d346c13](https://github.com/runspired/liquid-fire-tweenlite/commit/9d346c13d24732cf764b190663e4ab4d18180b58) **fix(blueprint)**: auto install ember-tweenlite *by [Chris Thoburn](https://github.com/runspired)*
+
 ## v1.0.2
 
 #### Commits
