@@ -52,7 +52,7 @@ export default function tween($element, properties = {}, options = {}, label = '
 }
 
 function normalizeOptions(properties, options) {
-  const opts = Object.assign({}, TWEEN_DEFAULTS, options);
+  const opts = Ember.assign({}, TWEEN_DEFAULTS, options);
   normalizeCSS(opts, properties);
 
   opts.duration = opts.duration / 1000;
