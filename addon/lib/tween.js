@@ -52,7 +52,7 @@ export default function tween($element, properties = {}, options = {}, label = '
 }
 
 function normalizeOptions(properties, options) {
-  const opts = Object.assign({}, TWEEN_DEFAULTS, options);
+  const opts = assign({}, TWEEN_DEFAULTS, options);
   normalizeCSS(opts, properties);
 
   opts.duration = opts.duration / 1000;
@@ -96,4 +96,20 @@ function normalizeCSS(opts, css) {
   }
 
   opts.css = css;
+}
+
+function assign(original, ...args) {
+  for (let i = 0, l = args.length; i < l; i++) {
+    let arg = args[i];
+    if (!arg) { continue; }
+
+    let updates = Object.keys(arg);
+
+    for (let i = 0, l = updates.length; i < l; i++) {
+      let prop = updates[i];
+      original[prop] = arg[prop];
+    }
+  }
+
+  return original;
 }
