@@ -99,14 +99,14 @@ function normalizeCSS(opts, css) {
 }
 
 function assign(original, ...args) {
-  for (let i = 0, l = args.length; i < l; i++) {
+  for (let i = 0, j = args.length; i < j; i++) {
     let arg = args[i];
     if (!arg) { continue; }
 
     let updates = Object.keys(arg);
 
-    for (let i = 0, l = updates.length; i < l; i++) {
-      let prop = updates[i];
+    for (let k = 0, l = updates.length; k < l; k++) {
+      let prop = updates[k];
       original[prop] = arg[prop];
     }
   }
