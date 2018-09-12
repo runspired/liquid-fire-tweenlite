@@ -4,12 +4,11 @@ Liquid-fire-tweenlite
 [![Build Status](https://travis-ci.org/runspired/liquid-fire-tweenlite.svg)](https://travis-ci.org/runspired/liquid-fire-tweenlite)
 [![npm version](https://badge.fury.io/js/liquid-fire-tweenlite.svg)](http://badge.fury.io/js/liquid-fire-tweenlite)
 [![Ember Observer Score](http://emberobserver.com/badges/liquid-fire-tweenlite.svg)](http://emberobserver.com/addons/liquid-fire-tweenlite)
+[![Discord](https://img.shields.io/discord/480462759797063690.svg?logo=discord)](https://discord.gg/zT3asNS)
 
 ## Support, Questions, Collaboration
 
-Join the [liquid-fire](https://embercommunity.slack.com/messages/liquid-fire/) channel on Slack.
-
-[![Slack Status](https://ember-community-slackin.herokuapp.com/badge.svg)](https://ember-community-slackin.herokuapp.com/)
+Join the Ember community on [discord](https://discord.gg/zT3asNS)
 
 ### Status
 
